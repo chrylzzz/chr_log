@@ -1,5 +1,6 @@
 <configuration scan="true" scanPeriod="10 seconds"
                debug="true">
+    <!-- 引入 logback 配置文件 -->
     <property resource="logback.properties"/>
 
     <contextName>${context.name}</contextName>                         <!-- 本项目的名字 -->
