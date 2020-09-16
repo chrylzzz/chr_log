@@ -5,6 +5,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>mylogback</module>
+		<module>annolog</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
