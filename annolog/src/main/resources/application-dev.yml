@@ -14,6 +14,6 @@ spring:
       idle-timeout: 10000
       auto-commit: true
       connection-test-query: SELECT 1
-
+# log日志
 logging:
   config: classpath:log4j2_dev.xml
