@@ -1,7 +1,6 @@
 package com.chryl.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Chr.yl on 2021/3/15.
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebLogController {
 
     @GetMapping("/weblog")
-    public String show() {
-        return "weblog success";
+    public String show(@PathVariable(required = false) String opa) {
+        return "weblog success:->" + opa;
 
     }
 }
