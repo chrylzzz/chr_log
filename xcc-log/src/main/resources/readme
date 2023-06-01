@@ -1,1 +1,11 @@
 logback-spring彩色日志
+
+logback-spring.xml 为自动加载
+
+指定加载配置文件使用配置根据环境自动装配
+# log日志
+logging:
+    config: classpath:logback-dev.xml
+
+logging:
+    config: classpath:logback-prod.xml

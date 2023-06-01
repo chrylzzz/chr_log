@@ -1,6 +1,6 @@
 server:
-  port: 8088
+  port: 8082
 
-#logging:
-#  config: logback-dev.xml
-#  config: ./src/main/resources/logback-dev.xml
+# log日志
+logging:
+  config: classpath:logback-dev.xml
