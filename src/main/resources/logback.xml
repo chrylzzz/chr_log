@@ -31,7 +31,7 @@
             <!--<fileNamePattern>logs/sys.%d.%i.log</fileNamePattern>-->
             <fileNamePattern>${log.dir}/sys-error.%d.%i.log</fileNamePattern>
             <!--<fileNamePattern>-->
-                <!--${log.dir}/error.%d{${rolling.policy.file.name.pattern}}%d{mmss}.%i.log.zip-->
+            <!--${log.dir}/error.%d{${rolling.policy.file.name.pattern}}%d{mmss}.%i.log.zip-->
             <!--</fileNamePattern>-->
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- maxFileSize:这是活动文件的大小，默认值是10MB,本篇设置为1KB，只是为了演示 -->
@@ -59,7 +59,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.dir}/sys-warn.%d.%i.log</fileNamePattern>
             <!--<fileNamePattern>-->
-                <!--${log.dir}/warn.%d{${rolling.policy.file.name.pattern}}%d{mmss}.%i.log.zip-->
+            <!--${log.dir}/warn.%d{${rolling.policy.file.name.pattern}}%d{mmss}.%i.log.zip-->
             <!--</fileNamePattern>-->
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${max.file.size}</maxFileSize>
@@ -80,7 +80,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.dir}/sys-info.%d.%i.log</fileNamePattern>
             <!--<fileNamePattern>-->
-                <!--${log.dir}/info.%d{${rolling.policy.file.name.pattern}}%d{mmss}.%i.log.zip-->
+            <!--${log.dir}/info.%d{${rolling.policy.file.name.pattern}}%d{mmss}.%i.log.zip-->
             <!--</fileNamePattern>-->
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${max.file.size}</maxFileSize>

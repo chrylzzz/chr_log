@@ -1,0 +1,6 @@
+server:
+  port: 8089
+
+# log存放地址
+logback:
+  path: /Users/chryl/logs/xcc-log/prod/

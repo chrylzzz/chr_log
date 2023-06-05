@@ -1,6 +1,6 @@
 server:
   port: 8089
 
-# log日志
+# log日志配置文件
 logging:
   config: classpath:logback-prod.xml

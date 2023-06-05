@@ -1,0 +1,9 @@
+logback-spring.xml 为自动加载
+
+指定加载 spring boot 配置文件使用配置根据环境自动装配
+logback:
+  path: /Users/chryl/logs/xcc-log/dev/
+
+# log存放地址
+logback:
+  path: /Users/chryl/logs/xcc-log/prod/
