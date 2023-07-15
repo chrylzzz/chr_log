@@ -4,15 +4,22 @@ import com.alibaba.fastjson.PropertyNamingStrategy;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONWriter;
+import com.chryl.boot.IVRInit;
 import com.chryl.config.ChrylConfigProperty;
+import com.chryl.po.ChrGoods;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 /**
+ * 驼峰转下划线
  * Created by Chr.yl on 2021/3/15.
  *
  * @author Chr.yl
@@ -24,6 +31,14 @@ public class XccLogPlusController {
     @Autowired
     private ChrylConfigProperty chrylConfigProperty;
 
+    /**
+     * fastjson
+     * 驼峰转下划线
+     *
+     * @param response
+     * @throws InterruptedException
+     * @throws IOException
+     */
     @GetMapping("chryl")
     public void chryl(HttpServletResponse response) throws InterruptedException, IOException {
         String loadYml = JSON.toJSONString(chrylConfigProperty, JSONWriter.Feature.PrettyFormat);
@@ -34,8 +49,16 @@ public class XccLogPlusController {
         response.getWriter().close();
     }
 
+    /**
+     * jackson
+     * fastjson
+     * 驼峰转下划线
+     *
+     * @param response
+     * @throws IOException
+     */
     @GetMapping("show")
-    public Object show() {
+    public void show(HttpServletResponse response) throws IOException {
 
         SerializeConfig config = new SerializeConfig();
         /*
@@ -47,10 +70,28 @@ public class XccLogPlusController {
          */
 //        config.propertyNamingStrategy = PropertyNamingStrategy.SnakeCase;
         config.propertyNamingStrategy = PropertyNamingStrategy.KebabCase;
-//        String loadYml = com.alibaba.fastjson.JSON.toJSONString(new IVREvent("asksaklf"), config);
-        String loadYml = com.alibaba.fastjson.JSON.toJSONString(chrylConfigProperty, config);
-//        String loadYml = JSON.toJSONString(IVRInit.CHRYL_CONFIG_PROPERTY, JSONWriter.Feature.PrettyFormat);
-        return loadYml;
+        //fastjson驼峰转下划线
+        String chrGood = com.alibaba.fastjson.JSON.toJSONString(
+                new ChrGoods(1, "cmmc", "223",
+                        LocalDate.now(), "ads", "",
+                        "", 23, ""), config);
+
+        ObjectMapper mapper = new ObjectMapper();
+        //jackson
+//        String writeValueAsString = mapper.writeValueAsString(chrylConfigProperty);
+        //jackson 驼峰转下划线
+        String writeValueAsString1 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(chrylConfigProperty);
+        //jackson 驼峰转下划线
+        String writeValueAsString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(IVRInit.CHRYL_CONFIG_PROPERTY);
+
+//
+//        response.getWriter().write(chrGood);
+//        response.getWriter().write(writeValueAsString1);
+        response.getWriter().write(writeValueAsString2);
+        response.flushBuffer();
+        response.getWriter().flush();
+        response.getWriter().close();
+
 
     }
 
