@@ -75,19 +75,23 @@ public class XccLogPlusController {
                 new ChrGoods(1, "cmmc", "223",
                         LocalDate.now(), "ads", "",
                         "", 23, ""), config);
+        //error
+//        String chrGood2 = com.alibaba.fastjson.JSON.toJSONString(IVRInit.CHRYL_CONFIG_PROPERTY, config);
+
 
         ObjectMapper mapper = new ObjectMapper();
         //jackson
-//        String writeValueAsString = mapper.writeValueAsString(chrylConfigProperty);
+        String writeValueAsString = mapper.writeValueAsString(chrylConfigProperty);
         //jackson 驼峰转下划线
         String writeValueAsString1 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(chrylConfigProperty);
         //jackson 驼峰转下划线
-        String writeValueAsString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(IVRInit.CHRYL_CONFIG_PROPERTY);
+//        String writeValueAsString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(IVRInit.CHRYL_CONFIG_PROPERTY);
 
-//
 //        response.getWriter().write(chrGood);
-//        response.getWriter().write(writeValueAsString1);
-        response.getWriter().write(writeValueAsString2);
+//        response.getWriter().write(chrGood2);
+        response.getWriter().write(writeValueAsString);
+        response.getWriter().write(writeValueAsString1);
+//        response.getWriter().write(writeValueAsString2);
         response.flushBuffer();
         response.getWriter().flush();
         response.getWriter().close();
