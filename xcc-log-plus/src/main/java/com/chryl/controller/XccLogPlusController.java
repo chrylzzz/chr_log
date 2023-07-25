@@ -39,28 +39,8 @@ public class XccLogPlusController {
      * @throws InterruptedException
      * @throws IOException
      */
-    @GetMapping("chryl")
-    public void chryl(HttpServletResponse response) throws InterruptedException, IOException {
-        String loadYml = JSON.toJSONString(chrylConfigProperty, JSONWriter.Feature.PrettyFormat);
-        log.info("loadYml : {}", loadYml);
-        response.getWriter().write(loadYml);
-        response.flushBuffer();
-        response.getWriter().flush();
-        response.getWriter().close();
-    }
-
-    /**
-     * jackson
-     * fastjson
-     * 驼峰转下划线
-     *
-     * @param response
-     * @throws IOException
-     */
-    @GetMapping("show")
-    public void show(HttpServletResponse response) throws IOException {
-
-        SerializeConfig config = new SerializeConfig();
+    @GetMapping("fastjson")
+    public void fastjson(HttpServletResponse response) throws InterruptedException, IOException {
         /*
         有四种序列化方式。
         CamelCase策略，Java对象属性：personId，序列化后属性：persionId – 实际只改了首字母 大写变小写
@@ -68,6 +48,9 @@ public class XccLogPlusController {
         SnakeCase策略，Java对象属性：personId，序列化后属性：person_id --大写字母前加下划线
         KebabCase策略，Java对象属性：personId，序列化后属性：person-id -大写字母前加减号
          */
+
+        //fastjson
+        SerializeConfig config = new SerializeConfig();
 //        config.propertyNamingStrategy = PropertyNamingStrategy.SnakeCase;
         config.propertyNamingStrategy = PropertyNamingStrategy.KebabCase;
         //fastjson驼峰转下划线
@@ -79,6 +62,25 @@ public class XccLogPlusController {
 //        String chrGood2 = com.alibaba.fastjson.JSON.toJSONString(IVRInit.CHRYL_CONFIG_PROPERTY, config);
 
 
+        //fastjson2
+        String loadYml = JSON.toJSONString(chrylConfigProperty, JSONWriter.Feature.PrettyFormat);
+        log.info("loadYml : {}", loadYml);
+        response.getWriter().write(loadYml);
+        response.flushBuffer();
+        response.getWriter().flush();
+        response.getWriter().close();
+    }
+
+    /**
+     * jackson
+     * 驼峰转下划线
+     *
+     * @param response
+     * @throws IOException
+     */
+    @GetMapping("jackson")
+    public void jackson(HttpServletResponse response) throws IOException {
+
         ObjectMapper mapper = new ObjectMapper();
         //jackson
         String writeValueAsString = mapper.writeValueAsString(chrylConfigProperty);
@@ -89,7 +91,7 @@ public class XccLogPlusController {
 
 //        response.getWriter().write(chrGood);
 //        response.getWriter().write(chrGood2);
-        response.getWriter().write(writeValueAsString);
+//        response.getWriter().write(writeValueAsString);
         response.getWriter().write(writeValueAsString1);
 //        response.getWriter().write(writeValueAsString2);
         response.flushBuffer();

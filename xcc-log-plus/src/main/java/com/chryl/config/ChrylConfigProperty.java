@@ -1,6 +1,7 @@
 package com.chryl.config;
 
 import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson2.annotation.JSONType;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
@@ -18,7 +19,8 @@ import java.util.List;
 @Data
 @ConfigurationProperties(prefix = "chryl")
 //@JsonNaming(PropertyNamingStrategy.LowerDotCaseStrategy.class)
-@JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)
+@JsonNaming(PropertyNamingStrategy.KebabCaseStrategy.class)//jackson
+@JSONType(naming = com.alibaba.fastjson2.PropertyNamingStrategy.KebabCase)//fastjson
 public class ChrylConfigProperty {
 
     /******************************************** XCC ********************************************/

@@ -12,7 +12,10 @@
 	<artifactId>xcc-log-plus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>xcc-log-plus</name>
-	<description>Demo project for Spring Boot</description>
+	<description>
+		log
+		fastjson和jsackson驼峰转下划线
+	</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
